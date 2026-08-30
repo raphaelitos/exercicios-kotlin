@@ -1,6 +1,13 @@
-fun main(){
-    val palavras: = readln().split(" ")
-    val frequencias: = palavras.groupingBy {it}.eachCount()
+package org.example.aula02
 
-    println(frequencias[0].value)
+fun main(){
+    val k: Int = readln().toInt()
+    val palavras: List<String> = readln().lowercase().split(" ")
+    val frequencias: Map<String, Int> = palavras.groupingBy {it}.eachCount()
+    val fatia = frequencias.entries.sortedByDescending { it.value }.take(k)
+
+
+    fatia.forEach { (str, freq) ->
+        println("$str: $freq")
+    }
 }
